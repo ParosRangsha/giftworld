@@ -15,21 +15,25 @@ const Createaccount = () => {
   let navigate = useNavigate()
   
   let saveData = async ()=>{
-   let db = getDatabase(app)
-   let newdocref = push(ref(db, 'user/')) 
-   set(newdocref,{
-    usermail : uMail,
-    userpassword: uPass,
-    userphone: uPhone
-   }).then(()=>{
-    setPopShow(false)
-    setErrShow(true)
-    setUMail('')
-    setUPass('')
+   if(uMail && uPass){
+      let db = getDatabase(app)
+      let newdocref = push(ref(db, 'user/')) 
+      set(newdocref,{
+        usermail : uMail,
+        userpassword: uPass,
+        userphone: uPhone
+      }).then(()=>{
+        setPopShow(false)
+        setErrShow(true)
+        setUMail('')
+        setUPass('')
 
-   }).catch(()=>{
-    alert('Not Success')
-   })
+      }).catch(()=>{
+        alert('Not Success')
+      })
+   }else{
+    alert('Please enter your E-mail and Password!')
+   }
   }
 
   return (

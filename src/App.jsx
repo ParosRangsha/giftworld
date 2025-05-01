@@ -4,9 +4,11 @@ import Home from './Pages/Home'
 import Createaccount from './Components/Createaccount'
 import Login from './Components/Login'
 import Account from './Components/Account'
+import Errorpage from './Components/Errorpage'
 
 let multipage = createBrowserRouter(createRoutesFromElements(
   <>
+    <Route path='*' element={<Errorpage/>}/>
     <Route path='/' element={<Home/>}/>
     <Route path='/create' element={<Login/>}/>
     <Route path='/login' element={<Createaccount/>}/>
