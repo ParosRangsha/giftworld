@@ -21,12 +21,14 @@ const Createaccount = () => {
       set(newdocref,{
         usermail : uMail,
         userpassword: uPass,
-        userphone: uPhone
       }).then(()=>{
-        setPopShow(false)
+
+        if(uPhone){
+          setPopShow(false)
+        }else{
+          setPopShow(true)
+        }
         setErrShow(true)
-        setUMail('')
-        setUPass('')
 
       }).catch(()=>{
         alert('Not Success')
@@ -61,7 +63,7 @@ const Createaccount = () => {
         <div className="space-y-4">
           <input onChange={(e)=>setUMail(e.target.value)} value={uMail} type="text" placeholder="Email or phone number" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"/>
           <input onChange={(e)=>setUPass(e.target.value)} value={uPass}  type="password" placeholder="Password" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"/>
-          <button onClick={()=>setPopShow(true)} type="submit" className="w-full bg-blue-600 text-white font-semibold py-3 rounded-md hover:bg-blue-700">Log In</button>
+          <button onClick={saveData} type="submit" className="w-full bg-blue-600 text-white font-semibold py-3 rounded-md hover:bg-blue-700">Log In</button>
           <div className="text-center">
             <a href="#" className="text-blue-600 text-sm hover:underline">Forgot password?</a>
           </div>
